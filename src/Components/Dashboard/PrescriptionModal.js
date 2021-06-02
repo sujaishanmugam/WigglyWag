@@ -70,10 +70,10 @@ const PrescriptionModal = (props) => {
 				{props.selectDoctor && (
 					<div className="mb-4 d-flex justify-content-between">
 						<span className="text-success">{props.selectDoctor.name}</span>
-						<span>
+						{/* <span>
 							<small>{props.selectDoctor.designation}</small>
-						</span>
-						<span className="text-secondary">{props.selectDoctor.category}</span>
+						</span> */}
+						{/* <span className="text-secondary">{props.selectDoctor.category}</span> */}
 					</div>
 				)}
 

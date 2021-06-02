@@ -5,8 +5,11 @@
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
-  width: 50%;
+  width: 70%;
   margin-top: 5%;
+}
+.messageSender__fileSelector{
+  border: none;
 }
 .messageSender__top {
   display: flex;

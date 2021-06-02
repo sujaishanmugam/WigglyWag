@@ -10,7 +10,7 @@ import Footer from '../Components/Footer/Footer';
 import Header from '../Components/Header/Header';
 import Infos from '../Components/Infos/Infos';
 import Services from '../Components/Services/Services';
-import Testimonials from '../Components/Testimonials/Testimonials';
+// import Testimonials from '../Components/Testimonials/Testimonials';
 
 const Home = () => {
 	useEffect(() => {
@@ -26,9 +26,9 @@ const Home = () => {
 			<AppointmentBanner />
 			<Doctors />
 			<Features />
-			<Testimonials />
+			{/* <Testimonials /> */}
 			<FeaturedService />
-			<Blogs />
+			{/* <Blogs /> */}
 			<Contact />
 			<Footer />
 		</div>

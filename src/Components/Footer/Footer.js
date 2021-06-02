@@ -11,26 +11,22 @@ const Footer = () => {
 	const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
 	const noNamed = [
-		{ name: 's.portal@gmail.com', link: '/' },
-		{ name: '+8809-6380-79309', link: '/checkup' },
+		{ name: 'Emergency care', link: '/' },
+		{ name: 'Check up', link: '/checkup' },
 		{ name: 'Emergency Dental Care', link: '/emergency' },
-		{ name: 'Check Up', link: '/checkup' },
-		{ name: 'Treatment of Personal Diseases', link: '/personal-treatment' },
-		{ name: 'Tooth Extraction', link: '/tooth-extract' },
-		{ name: 'Check Up', link: '/checkup' }
+		{ name: 'Treatment of diseases', link: '/checkup' },
+		{ name: 'Pet health', link: '/personal-treatment' }
 	];
 	const ourAddress = [
-		{ name: 'House-1, Road 6, Dhaka 1205', link: '//google.com/map' },
+		{ name: 'Chennai, Tamilnadu, India', link: '//google.com/map' },
 		{ name: 'View in map', link: '//google.com/map' }
 	];
 	const oralHealth = [
 		{ name: 'Emergency Dental Care', link: '/emergency' },
-		{ name: 'Check Up', link: '/checkup' },
-		{ name: 'Treatment of Personal Diseases', link: '/personal-treatment' },
-		{ name: 'Tooth Extraction', link: '/tooth-extract' },
-		{ name: 'Check Up', link: '/checkup' },
-		{ name: 'Check Up', link: '/checkup' },
-		{ name: 'Check Up', link: '/checkup' }
+		{ name: 'Pet training', link: '/checkup' },
+		{ name: 'Treatment of Diseases', link: '/personal-treatment' },
+		{ name: 'Checkup', link: '/tooth-extract' }
+	
 	];
 	const services = [
 		{ name: 'Emergency Dental Care', link: '/emergency' },
@@ -46,9 +42,9 @@ const Footer = () => {
 			<footer className="footer-area clear-both">
 				<div className="container pt-3">
 					<div className="row py-5">
-						<FooterCol key={1} menuTitle={"Online 's Portal"} menuItems={noNamed} />
-						<FooterCol key={2} menuTitle="Services" menuItems={services} />
-						<FooterCol key={3} menuTitle="Oral Health" menuItems={oralHealth} />
+						<FooterCol key={1} menuTitle={"Wiggly wag Portal"} menuItems={noNamed} />
+						{/* <FooterCol key={2} menuTitle="Services" menuItems={services} /> */}
+						<FooterCol key={3} menuTitle="Pet Health" menuItems={oralHealth} />
 						<FooterCol key={4} menuTitle="Our Address" menuItems={ourAddress}>
 							<ul className="social-media list-inline">
 								<li className="list-inline-item">
@@ -75,9 +71,7 @@ const Footer = () => {
 							</div>
 						</FooterCol>
 					</div>
-					<div className="copyRight text-center pb-3 text-secondary">
-						<p> &copy; 2021 Developed by Prionto Abdullah</p>
-					</div>
+				
 				</div>
 			</footer>
 
@@ -102,13 +96,13 @@ const Footer = () => {
 			>
 				<form className="px-5 my-3 text-center">
 					<p className="text-center mb-2 mt-3">
-						<small>You need to Login with this email and password</small>
+						<small>Only admin is Allowed</small>
 					</p>
-					<h5 className="text-secondary mb-3">Email: doctors.portal@gmail.com</h5>
+					{/* <h5 className="text-secondary mb-3">Email: doctors.p@gmail.com</h5>
 					<h6 className="text-secondary mb-3">Password: AdminDoctor@123</h6>
-                    <p className="text-center mb-2 mt-3 px-5">
-						<small>Or you can create a new account or signIn with a account which You did not use or provide as an patient appointment email. </small>
-					</p>
+                    <p className="text-center mb-2 mt-3 px-5"> */}
+						{/* <small>Or you can create a new account or signIn with a account which You did not use or provide as an patient appointment email. </small> */}
+					{/* </p> */}
 					<div className="form-group text-center mt-2">
 						<Link to="/dashboard/dashboard">
 							<button className="btn btn-success mr-3 text-white">Open Admin Panel</button>

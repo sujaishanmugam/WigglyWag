@@ -253,7 +253,7 @@ const Login = () => {
           <div className="col-md-6 shadow py-3">
             <div className="text-center">
               <Link to="/" className="nav-link">
-                <h3 className="style-color mb-2">Online Doctor's Portal</h3>
+                <h3 className="style-color mb-2">Wigglywag Login</h3>
               </Link>
               {currentUser.success && (
                 <div className="alert alert-success" role="alert">

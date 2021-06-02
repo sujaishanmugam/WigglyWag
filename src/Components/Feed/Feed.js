@@ -1,30 +1,47 @@
 import React, { useEffect, useState } from "react";
-import db from "../../Pages/Authentication/firebase";
-import MessageSender from "../MessageSender/MessageSender";
-import Post from "../Post/Post";
 import "./Feed.css";
+// import db from "./firebase";
+import MessageSender from "../../Components/MessageSender/MessageSender";
+import Post from "../../Components/Post/Post";
+import axios from "../../Pages/Authentication/axios";
+import Pusher from "pusher-js";
+
+const pusher = new Pusher('2e9cac274c8b7cba5a5b', {
+  cluster: 'mt1'
+});
+
 
 function Feed() {
   const [posts, setPosts] = useState([]);
 
+
+  const syncFeed = () => {
+    axios.get("/retrieve/posts").then((res) => {
+      // console.log(res.data);
+      setPosts(res.data);
+    });
+  };
+
   useEffect(() => {
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) =>
-        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-      );
+    const channel = pusher.subscribe('posts');
+    channel.bind('inserted', function(data) {
+      syncFeed()
+    });
+  },[])
+
+  useEffect(() => {
+    syncFeed();
   }, []);
   return (
     <div className="feed">
       <MessageSender />
-      {posts.map((post) => (
+      {posts.map((entry) => (
         <Post
-          key={post.data.id}
-          profilePic={post.data.profilePic}
-          message={post.data.message}
-          timestamp={post.data.timestamp}
-          username={post.data.username}
-          image={post.data.image}
+          profilePic={entry.avatar}
+          message={entry.text}
+          timestamp={entry.timestamp}
+          imgName={entry.imgName}
+          username={entry.user}
         />
       ))}
     </div>

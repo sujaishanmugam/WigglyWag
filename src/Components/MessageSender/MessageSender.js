@@ -1,77 +1,104 @@
 import React, { useContext, useState } from "react";
 import { Avatar } from "@material-ui/core";
 import "./MessageSender.css";
-import VideocamIcon from "@material-ui/icons/Videocam";
-import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import firebase from "firebase"
-import { useStateValue } from "../../StateProvider";
+import axios from "../../Pages/Authentication/axios";
+import FormData from "form-data";
 import db from "../../Pages/Authentication/firebase";
-import { DataContext } from '../../App';
+import { DataContext } from "../../App";
+import firebase from "firebase";
 
 function MessageSender() {
-  // const [{auth}, dispatch] = useStateValue()
-  const { loggedInUser, setLoggedInUser, allPatients } =
-  useContext(DataContext);
+  const { loggedInUser } = useContext(DataContext);
+  // const [{ user }, dispatch] = useStateValue();
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState(null);
+
+  console.log("userrrrr",loggedInUser)
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    db.collection("posts").add({
-      message: input,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      profilePic: loggedInUser.photoURL,
-      username: loggedInUser.name,
-      image: imageUrl
-    })
+
+    if (image) {
+      const imgForm = new FormData();
+      imgForm.append("file", image, image.name);
+      axios
+        .post("/upload/image", imgForm, {
+          headers: {
+            accept: "application/json",
+            "Accept-Language": "en-US,en;q=0.8",
+            "Content-Type": `multipart/form-data; boundary=${imgForm._boundary}`,
+          },
+        })
+        .then((res) => {
+          // console.log(res.data);
+
+          const postData = {
+            text: input,
+            imgName: res.data.filename,
+            user: loggedInUser.name,
+            avatar: loggedInUser.photoURL,
+            timestamp: Date.now(),
+          };
+          // console.log(postData);
+          savePost(postData);
+        });
+    } else {
+      const postData = {
+        text: input,
+        user: loggedInUser.name,
+        avatar: loggedInUser.photoURL,
+        timestamp: Date.now(),
+      };
+      savePost(postData);
+    }
+
+    // axios.post("/upload/image", imgForm, {
+    //   headers: {
+    //     accept: "application/json",
+    //     "Accept-Language": "en-US,en;q=0.8",
+    //     "Content-Type": `multipart/form-data; boundary=${imgForm._boundary}`,
+    //   },
+    // });
+
+    setImageUrl("");
+    setInput("");
+    setImage(null);
   };
-  const handleFileChange = (e) => {
-    const newFile = e.target.files[0];
-    setImageUrl(newFile);
+
+  const savePost = async (postData) => {
+    await axios.post("/upload/post", postData).then((res) => console.log(res));
   };
 
   return (
     <div className="messageSender">
       <div className="messageSender__top">
-        <Avatar src="loggedInUser.photoURL"/>
+        <Avatar src={loggedInUser.photoURL} />
         <form>
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="messageSender__input"
-            placeholder={`What's on your mind?`}
+            placeholder={`What's on your mind? ${loggedInUser.name}`}
           />
           <input
             type="file"
-            value={imageUrl}
-            onChange={handleFileChange}
-            placeholder="image URL {Optional} "
+            className="messageSender__fileSelector"
+            onChange={handleChange}
           />
           <button onClick={handleSubmit} type="submit">
-            Hidden submit
+            submit
           </button>
         </form>
       </div>
-      {/* <div className="messageSender__bottom">
-        <div className="messageSender__bottom">
-          <div className="messageSender__option">
-            <VideocamIcon style={{ color: "red" }} />
-            <h3>Live Video</h3>
-          </div>
-          <div className="messageSender__option">
-            <PhotoLibraryIcon style={{ color: "green" }} />
-            <h3>Photo/Video</h3>
-          </div>
-          <div className="messageSender__option">
-            <InsertEmoticonIcon style={{ color: "orange" }} />
-            <h3>Feeling/Activity</h3>
-          </div>
-        </div>
-      </div> */}
+
     </div>
   );
 }
 
 export default MessageSender;
-
-

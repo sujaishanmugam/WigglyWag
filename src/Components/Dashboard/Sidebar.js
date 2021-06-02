@@ -30,7 +30,7 @@ const Sidebar = () => {
         <li>
           <Link to="/" style={{ color: "#15D1C8" }}>
             <img src={logo} alt="logo" width="25px" />
-            <span className="text-white navName"> Online Doctor's Portal </span>
+            <span className="text-white navName"> Wigglywag's Portal </span>
           </Link>
         </li>
         <li>

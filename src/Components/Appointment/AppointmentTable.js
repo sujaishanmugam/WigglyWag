@@ -115,7 +115,7 @@ const AppointmentTable = () => {
           selectAppointment && (
             <div className="px-4">
               <h4 className="text-primary text-center">
-                {selectAppointment.category}
+                {/* {selectAppointment.category} */}
               </h4>
               <h5 className="text-center style-color">
                 {selectAppointment.name}
@@ -213,7 +213,7 @@ const AppointmentTable = () => {
                     ref={register({ required: true })}
                     className="form-control"
                     name="problem"
-                    placeholder="Describe Your Problem... (Ex: headache)"
+                    placeholder="Describe Your Problem... (Ex: Pet was not feeling well)"
                     type="text"
                   />
                   {errors.problem && (

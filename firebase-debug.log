@@ -1,0 +1,51 @@
+[debug] [2021-05-28T05:54:11.757Z] ----------------------------------------------------------------------
+[debug] [2021-05-28T05:54:11.760Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-05-28T05:54:11.761Z] CLI Version:   9.12.0
+[debug] [2021-05-28T05:54:11.761Z] Platform:      win32
+[debug] [2021-05-28T05:54:11.761Z] Node Version:  v15.5.0
+[debug] [2021-05-28T05:54:11.762Z] Time:          Fri May 28 2021 11:24:11 GMT+0530 (India Standard Time)
+[debug] [2021-05-28T05:54:11.763Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-28T05:54:11.772Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-28T05:54:11.773Z] > authorizing via signed-in user (sujaishanmugam26@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\soal\WigglyWag
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using online-doctors-portal. 
+[debug] [2021-05-28T05:55:13.293Z] > refreshing access token with scopes: []
+[debug] [2021-05-28T05:55:13.294Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-05-28T05:55:13.997Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 28 May 2021 05:55:15 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-28T05:55:14.084Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/online-doctors-portal [none]
+[debug] [2021-05-28T05:55:15.273Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/online-doctors-portal 403
+[debug] [2021-05-28T05:55:15.273Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/online-doctors-portal {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-05-28T05:55:15.274Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-05-28T05:55:15.593Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Client.doRequest (C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:238:23)
+    at processTicksAndRejections (node:internal/process/task_queues:93:5)
+    at async Client.request (C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:96:20)
+    at async Object.getFirebaseProject (C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:290:21)
+    at async Object.doSetup [as project] (C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:77:27)
+    at async init (C:\Users\sujai\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:19:9)
+[error] 
+[error] Error: Failed to get Firebase project online-doctors-portal. Please make sure the project exists and your account has permission to access it.
